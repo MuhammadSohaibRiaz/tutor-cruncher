@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { createClient } from "@/lib/supabase/client";
+import { supabase } from "@/lib/supabase/client";
 
 type Profile = {
   id: string;
@@ -10,7 +10,6 @@ type Profile = {
 };
 
 export function useUser() {
-  const supabase = createClient();
   const [user, setUser] = useState<Profile | null>(null);
 
   useEffect(() => {
@@ -34,7 +33,7 @@ export function useUser() {
     }
 
     loadUser();
-  }, [supabase]);
+  }, []);
 
   return user;
 }
